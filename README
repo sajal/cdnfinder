@@ -1,0 +1,11 @@
+Usage
+
+    ./cdnfinder.py <hostname>
+
+example:-
+
+    ./cdnfinder.py cdn.sstatic.net
+
+Will output:-
+
+    MaxCDN
