@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import dns
 import dns.message
 import dns.query
@@ -7,12 +6,12 @@ CDN_PROVIDER  = [
     [".akamai.net", "Akamai"],
     [".akamaiedge.net", "Akamai"],
     [".llnwd.net", "Limelight"],
-    ["edgecastcdn.net", "Edgecast"],
+    ["edgecastcdn.net", "EdgeCast"],
     ["hwcdn.net", "Highwinds"],
     [".panthercdn.com", "Panther"],
     [".simplecdn.net", "Simple CDN"],
     [".instacontent.net", "Mirror Image"],
-    [".footprint.net", "Level 3"],
+    [".footprint.net", "Level3"],
     [".ay1.b.yahoo.com", "Yahoo"],
     [".yimg.", "Yahoo"],
     [".google.", "Google"],
@@ -20,11 +19,11 @@ CDN_PROVIDER  = [
     ["youtube.", "Google"],
     [".googleusercontent.com", "Google"],
     [".internapcdn.net", "Internap"],
-    [".cloudfront.net", "Amazon CloudFront"],
+    [".cloudfront.net", "Amazon Cloudfront"],
     [".netdna-cdn.com", "MaxCDN"],
     [".netdna-ssl.com", "MaxCDN"],
     [".netdna.com", "MaxCDN"],
-    [".cotcdn.net", "Cotendo CDN"],
+    [".cotcdn.net", "Cotendo"],
     [".cachefly.net", "Cachefly"],
     ["bo.lt", "BO.LT"],
     [".cloudflare.com", "Cloudflare"],
@@ -32,7 +31,7 @@ CDN_PROVIDER  = [
     [".lxdns.com", "lxdns.com"],
     [".att-dsa.net", "AT&T"],
     [".vo.msecnd.net", "Windows Azure"],
-    [".voxcdn.net", "VoxCDN"],
+    [".voxcdn.net", "Voxel"],
     [".bluehatnetwork.com", "Blue Hat Network"],
     [".swiftcdn1.com", "SwiftCDN"],
     [".rncdn1.com", "Reflected Networks"],
@@ -49,10 +48,9 @@ def finder(host):
             return cdn[1]
     return None
 
-def findcdnfromhost(host):
+def findcdnfromhost(host, dnsip = "8.8.8.8"):
     newhost = host
     try:
-        dnsip = "8.8.8.8"
         q = dns.message.make_query(host, "A")
         r = dns.query.udp(q, dnsip)
         for ans in r.answer:
